@@ -1,3 +1,5 @@
+# 在不使用numpy的时候，进行简单的并行计算
+
 import time
 from tqdm import tqdm
 
