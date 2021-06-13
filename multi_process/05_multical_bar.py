@@ -28,8 +28,6 @@ if __name__ == '__main__':
 
     res_temp = [P.apply_async(func=myf, args=(i,), callback=lambda _: pbar.update(1)) for i in value]
     # result = [res.get(timeout=3) for res in res_temp]
-    print('show result')
     result = [safely_get(res, timeout=1) for res in res_temp]
 
-    print('shwo finaly')
     print(result)
