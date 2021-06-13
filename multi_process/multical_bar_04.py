@@ -1,35 +1,18 @@
-from multiprocessing import Pool, TimeoutError
-import time
+from multiprocessing import Pool
 from tqdm import tqdm
+import time
 
 
 def myf(x):
-    # print('in worker')
-    if x % 5 == 0:
-        time.sleep(20.2)
-    else:
-        time.sleep(0.3)
+    time.sleep(1)
     return x * x
 
 
-def safely_get(value, timeout=2):
-    # print('in safelt get')
-    try:
-        value = value.get(timeout=timeout)
-    except TimeoutError:
-        value = 0
-    return value
-
-
 if __name__ == '__main__':
-    P = Pool(processes=10)
-    value = range(40)
-    pbar = tqdm(total=len(value))
+    value_x= range(20)
+    P = Pool(processes=4)
 
-    res_temp = [P.apply_async(func=myf, args=(i,), callback=lambda _: pbar.update(1)) for i in value]
-    # result = [res.get(timeout=3) for res in res_temp]
-    print('show result')
-    result = [safely_get(res, timeout=1) for res in res_temp]
+    res = [P.apply_async(func=myf, args=(i, )) for i in value_x]
+    result = [i.get(timeout=2) for i in res]
 
-    print('shwo finaly')
     print(result)
