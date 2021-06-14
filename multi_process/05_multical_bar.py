@@ -4,7 +4,6 @@ from tqdm import tqdm
 
 
 def myf(x):
-    # print('in worker')
     if x % 5 == 0:
         time.sleep(20.2)
     else:
@@ -13,12 +12,12 @@ def myf(x):
 
 
 def safely_get(value, timeout=2):
-    # print('in safelt get')
+
     try:
-        value = value.get(timeout=timeout)
+        data = value.get(timeout=timeout)
     except TimeoutError:
-        value = 0
-    return value
+        data = 0
+    return data
 
 
 if __name__ == '__main__':
