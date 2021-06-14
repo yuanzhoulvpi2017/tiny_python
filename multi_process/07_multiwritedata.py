@@ -21,11 +21,13 @@ if __name__ == "__main__":
     finaldata = Manager().dict()
 
     P = Pool(processes=20)
-    reslist = []
 
-    for i in tqdm(range(200)):
-        res = P.apply_async(func=worker, args=(i, finaldata))
-        reslist.append(res)
+    # reslist = []
+    # for i in tqdm(range(200)):
+    #     res = P.apply_async(func=worker, args=(i, finaldata))
+    #     reslist.append(res)
+
+    reslist = [P.apply_async(func=worker, args=(i, finaldata)) for i in range(200)]
 
     [res.get(timeout=200) for res in tqdm(reslist)]
 

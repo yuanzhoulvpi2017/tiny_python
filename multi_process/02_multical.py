@@ -4,11 +4,9 @@ from multiprocessing import Pool
 import time
 from tqdm import tqdm
 
-
 def myf(x):
     time.sleep(1)
     return x * x
-
 
 if __name__ == '__main__':
     print('-- start run ---')
