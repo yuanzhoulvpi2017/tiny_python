@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     [p.join() for p in subprocess_list]
 
-    finaldata = pd.concat([pd.DataFrame(value) for (key,value) in finaldata.items()])
+    finaldata = pd.concat([pd.DataFrame(value) for (key, value) in finaldata.items()])
 
     print(finaldata)
     
