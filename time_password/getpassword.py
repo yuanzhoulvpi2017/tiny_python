@@ -2,9 +2,10 @@ import string
 import random
 import timeit
 import numpy as np
+import itertools
 
-allchar = string.ascii_lowercase + ' '
-userdatabase = {'yuanz': 'gzh pypihhh'}
+allchar = string.ascii_lowercase + ' ,;:'
+userdatabase = {'yuanz': 'gzh: pypi; desc: zhnb;'}
 
 
 # def check_password(user, guess_pd):
@@ -52,9 +53,44 @@ def guess_length(user, max_length=32, verbose=False) -> int:
     return most_likely
 
 
+def guess_str(user, length, verbose=False):
+    guess = random_str(size=length)
+    trials = 1000
+    counter = itertools.count()
+
+    while True:
+        i = next(counter) % length
+        for c in allchar:
+            alt = guess[:i] + c + guess[(i + 1):]
+
+            alt_time = timeit.repeat(stmt="""check_password(user, x)""",
+                                     setup=f"user={user!r}; x={alt!r}",
+                                     globals=globals(),
+                                     number=trials,
+                                     repeat=10)
+
+            guess_time = timeit.repeat(stmt="""check_password(user, x)""",
+                                       setup=f"user={user!r}; x={guess!r}",
+                                       globals=globals(),
+                                       number=trials,
+                                       repeat=10)
+
+            if check_password(user=user, guess_pd=alt):
+                print(alt)
+                return alt
+
+            if min(alt_time) > min(guess_time):
+                guess = alt
+                if verbose:
+                    print(guess)
+
+
 def main():
-    data = guess_length(user='yuanz', verbose=True)
-    print(data)
+    pd_length = guess_length(user='yuanz', verbose=True)
+    print(pd_length)
+
+    password = guess_str(user="yuanz", length=pd_length, verbose=True)
+    print(f"password: {password!r}")
 
 
 if __name__ == '__main__':
