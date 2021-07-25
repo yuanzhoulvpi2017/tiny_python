@@ -4,14 +4,8 @@ import timeit
 import numpy as np
 import itertools
 
-allchar = string.ascii_lowercase + ' ,;:'
-userdatabase = {'yuanz': 'gzh: pypi; desc: zhnb;'}
-
-
-# def check_password(user, guess_pd):
-#     actual_pd = userdatabase[user]
-#
-#     return actual_pd == guess_pd
+allchar = string.ascii_lowercase + ' '
+userdatabase = {'yuanz': 'gzh pypi r and python'}
 
 
 def check_password(user, guess_pd):
