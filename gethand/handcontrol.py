@@ -6,8 +6,9 @@ import numpy as np
 
 import HandTrackingModule as htm
 from ctypes import cast, POINTER
-from comtypes import CLSCTX_ALL
-from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+
+# from comtypes import CLSCTX_ALL
+# from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
 ##############################################################
 wCam, hCam = 640, 480
@@ -16,15 +17,15 @@ wCam, hCam = 640, 480
 ##############################################################
 
 def main():
-    devices = AudioUtilities.GetSpeakers()
-    interface = devices.Activate(
-        IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
-    volume = cast(interface, POINTER(IAudioEndpointVolume))
+    # devices = AudioUtilities.GetSpeakers()
+    # interface = devices.Activate(
+    #     IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+    # volume = cast(interface, POINTER(IAudioEndpointVolume))
     # volume.GetMute()
     # volume.GetMasterVolumeLevel()
-    volRange = volume.GetVolumeRange()
-    minVol = volRange[0]
-    maxVol = volRange[1]
+    # volRange = volume.GetVolumeRange()
+    # minVol = volRange[0]
+    # maxVol = volRange[1]
 
     # volume.SetMasterVolumeLevel(-30.0, None)
 
@@ -56,7 +57,7 @@ def main():
 
             length = math.hypot(x2 - x1, y2 - y1)
 
-            vol = np.interp(length, [50, 300], [minVol, maxVol])
+            # vol = np.interp(length, [50, 300], [minVol, maxVol])
             volBar = np.interp(length, [50, 300], [400, 150])
             volPer = np.interp(length, [50, 300], [0, 100])
 
@@ -64,7 +65,7 @@ def main():
             # Hand range 50 - 300
             # Volume Range -65 - 0
             # change Volume
-            volume.SetMasterVolumeLevel(vol, None)
+            # volume.SetMasterVolumeLevel(vol, None)
 
         cv2.rectangle(img=img, pt1=(50, 150), pt2=(85, 400), color=(255, 0, 0), thickness=3)
         cv2.rectangle(img=img, pt1=(50, int(volBar)), pt2=(85, 400), color=(255, 0, 0), thickness=cv2.FILLED)
