@@ -163,7 +163,7 @@ async def run_limit(func, sem, **kargs):
 async def main7():
     """
     使用asyncio.semaphore来限制最大的协程数量
-    这里运行的时间是6s，因为1运行完，3开始运行，2结束的时候是4运行，最终根据最长的来，也就是6秒
+    这里运行的时间是6s，因为1运行完，3开始运行，2结束的时候是4运行，最终根据最长时间的来计算，也就是6秒
     """
     start_date = datetime.datetime.now()
     print(f'Start at {start_date:%Y-%m-%d %H:%M:%S}')
