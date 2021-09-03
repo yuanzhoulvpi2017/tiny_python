@@ -1,3 +1,5 @@
+import time
+
 import cv2
 import mediapipe as mp
 import numpy as np
@@ -61,6 +63,7 @@ class KeyBorad(object):
         for i_index, i_value in enumerate(self.rect_data):
             for j_index, j_value in enumerate(i_value):
                 if (j_value[0] <= cx <= (j_value[0] + self.width)) and (j_value[1] <= cy <= (j_value[1] + self.height)):
+                    print(f'-----> detection letter: {self.letter__[i_index][j_index]}')
                     cv2.rectangle(img=img, pt1=(j_value[0], j_value[1]),
                                   pt2=(j_value[0] + self.width, j_value[1] + self.height),
                                   color=(204, 102, 0), thickness=2)
@@ -95,8 +98,8 @@ def main():
             lm_list = detector.findposition(img=img, draw=False)
 
             if len(lm_list) != 0:
-                print(lm_list[4])
-                print(lm_list[8])
+                # print(lm_list[4])
+                # print(lm_list[8])
                 cv2.circle(img=img, center=(lm_list[4][1], lm_list[4][2]), radius=5, color=(0, 0, 0),
                            thickness=cv2.FILLED)
                 cv2.circle(img=img, center=(lm_list[8][1], lm_list[8][2]), radius=5, color=(204, 102, 0),  # bgr
