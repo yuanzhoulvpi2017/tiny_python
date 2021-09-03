@@ -106,7 +106,7 @@ def main():
                            thickness=cv2.FILLED)
                 keyboard.detector_figure_on_keyboard(img=img, figure_position=lm_list[8])
 
-            cv2.imshow(winname="test", mat=img)
+            cv2.imshow(winname="get letter", mat=img)
             cv2.waitKey(1)
 
 
