@@ -30,7 +30,7 @@ def main():
             if results.multi_face_landmarks:
                 for face_landmarks in results.multi_face_landmarks:
                     if face_landmarks is not None:
-                        print(face_landmarks.landmark)
+                        # print(face_landmarks.landmark)
                         mp_drawing.draw_landmarks(
                             image=image,
                             landmark_list=face_landmarks,
