@@ -7,15 +7,15 @@ import numpy as np
 from HandTrackModel2 import HandDetector
 
 
-def show_single_char(img, start=(200, 200), width=100, height=100):
-    x, y = start
-
-    sub_img = img[y:(y + height), x:(x + width)]
-    white_rect = np.full(shape=sub_img.shape, fill_value=255, dtype=np.uint8)
-
-    res = cv2.addWeighted(sub_img, 0.5, white_rect, 0.5, 1.0)
-    img[y:(y + height), x:(x + width)] = res
-    return img
+# def show_single_char(img, start=(200, 200), width=100, height=100):
+#     x, y = start
+#
+#     sub_img = img[y:(y + height), x:(x + width)]
+#     white_rect = np.full(shape=sub_img.shape, fill_value=255, dtype=np.uint8)
+#
+#     res = cv2.addWeighted(sub_img, 0.5, white_rect, 0.5, 1.0)
+#     img[y:(y + height), x:(x + width)] = res
+#     return img
 
 
 class KeyBorad(object):
