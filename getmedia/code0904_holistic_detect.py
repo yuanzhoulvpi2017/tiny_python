@@ -9,9 +9,6 @@ mp_holistic = mp.solutions.holistic
 def main():
     # For webcam input:
     cap = cv2.VideoCapture(0)
-    # cap.set(cv2.CAP_PROP_FRAME_WIDTH, 10)
-    # cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-    cap.set(cv2.CAP_PROP_FPS, 40)
     with mp_holistic.Holistic(
             min_detection_confidence=0.5,
             min_tracking_confidence=0.5) as holistic:
@@ -35,26 +32,14 @@ def main():
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
             if image is not None:
-                if results.pose_world_landmarks is not None:
-                    mp_drawing.draw_landmarks(
-                        image,
-                        results.pose_world_landmarks,
-                        # mp_holistic.FACE_CONNECTIONS,
-                        # landmark_drawing_spec=None,
-                        # connection_drawing_spec=mp_drawing_styles
-                        # .get_default_face_mesh_contours_style()
-                    )
-
-                if results.face_landmarks is not None:
-
-                    mp_drawing.draw_landmarks(
-                        image,
-                        results.face_landmarks,
-                        mp_holistic.FACE_CONNECTIONS,
-                        # landmark_drawing_spec=None,
-                        # connection_drawing_spec=mp_drawing_styles
-                        # .get_default_face_mesh_contours_style()
-                    )
+                mp_drawing.draw_landmarks(
+                    image,
+                    results.face_landmarks,
+                    mp_holistic.FACE_CONNECTIONS,
+                    landmark_drawing_spec=None,
+                    # connection_drawing_spec=mp_drawing_styles
+                    # .get_default_face_mesh_contours_style()
+                )
                 mp_drawing.draw_landmarks(
                     image,
                     results.pose_landmarks,
