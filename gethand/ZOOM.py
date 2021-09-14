@@ -58,15 +58,12 @@ def main():
         if success:
             img = detector.findhands(img)
 
-        try:
             firsthand_lmlist = detector.findposition(handno=0)
-            zoom_dict = Zoom(lmlist=firsthand_lmlist)
-            zoom_dict()
-            print(f"是否拿捏: {zoom_dict.niehe} 缩放比例：{zoom_dict.zoomvalue:.2f}")
 
-        except:
-
-            continue
+            if len(firsthand_lmlist) == 21:
+                zoom_dict = Zoom(lmlist=firsthand_lmlist)
+                zoom_dict()
+                print(f"是否拿捏: {zoom_dict.niehe} 缩放比例：{zoom_dict.zoomvalue:.2f}")
 
         cv2.imshow(winname="pose", mat=img)
         cv2.waitKey(1)
