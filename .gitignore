@@ -136,3 +136,5 @@ dmypy.json
 
 /python_GIS/数据集/lftx.sfc.2021.nc
 /python_GIS/结果/
+
+/python_GIS/数据集/cru_ts4.05.1901.2020.tmp.dat.nc
