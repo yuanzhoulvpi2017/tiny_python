@@ -1,2 +1,2 @@
 # tiny_python
-just tiny python
+python 数据科学应用
