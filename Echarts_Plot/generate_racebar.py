@@ -75,7 +75,7 @@ class BarRace(object):
         grid: {
             top: 10,
             bottom: 30,
-            left: 150,
+            left: 200,
             right: 80
         },
         xAxis: {
@@ -249,8 +249,8 @@ if __name__ == '__main__':
     data.columns = data.iloc[0, :]
     data = data.iloc[1:, ]
 
-    data = data[['Income', 'Country', 'Year']]
-    data['Income'] = data['Income'].astype('int')
+    data = data[['Population', 'Country', 'Year']]
+    data['Income'] = data['Population'].astype('int')
     data['Year'] = data['Year'].astype('int')
     data = data.rename(columns={'Income': 'data_value', "Country": 'data_class', 'Year': 'data_date'})
 
