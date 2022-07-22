@@ -145,3 +145,5 @@ dmypy.json
 .tiff
 .xml
 /python_GIS/数据集/
+埋点可视化/.DS_Store
+.DS_Store
