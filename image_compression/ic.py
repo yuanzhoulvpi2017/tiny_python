@@ -5,6 +5,7 @@ from tqdm import tqdm
 
 import shutil
 
+
 import sys
 from itertools import chain
 
@@ -53,11 +54,13 @@ def compress_image(image_path):
             shutil.copyfile(image_path, output_image)
         else:
             width, height = raw_image.size
-            raw_image.resize((int(width * 0.9), int(height * 0.9)), Image.ANTIALIAS).save(template_image)
+            raw_image.resize((int(width * 0.9), int(height * 0.9)),
+                             Image.ANTIALIAS).save(template_image)
             while imagesize(template_image) > target_size:
                 template_iamge2 = Image.open(template_image)
                 width_2, height_2 = template_iamge2.size
-                template_iamge2.resize((int(width_2 * 0.9), int(height_2 * 0.9)), Image.ANTIALIAS).save(template_image)
+                template_iamge2.resize(
+                    (int(width_2 * 0.9), int(height_2 * 0.9)), Image.ANTIALIAS).save(template_image)
 
             shutil.copyfile(template_image, output_image)
     except Exception as e:
@@ -72,7 +75,8 @@ if __name__ == '__main__':
 
     image_dir = sys.argv[1]
 
-    image_file_list = list(chain(*[glob(os.path.join(image_dir, i)) for i in ['*.png', '*.jpg', '*.jpeg']]))
+    image_file_list = list(
+        chain(*[glob(os.path.join(image_dir, i)) for i in ['*.png', '*.jpg', '*.jpeg']]))
 
     # for temp_image_path in tqdm(image_file_list):
     #     compress_image(temp_image_path)
