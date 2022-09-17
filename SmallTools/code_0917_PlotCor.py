@@ -1,3 +1,7 @@
+"""
+绘制变量的cor的小工具
+小demo 一个小时左右完成的，代码有些粗糙～
+"""
 import sys
 
 import matplotlib.pyplot as plt
