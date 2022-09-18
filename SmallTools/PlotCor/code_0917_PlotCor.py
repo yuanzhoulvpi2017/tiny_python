@@ -87,7 +87,7 @@ class PlotCor(QWidget):
                     QMessageBox.warning(self, "警告⚠️", "x轴标签和y轴标签不可以相等哦～", QMessageBox.Cancel)
                 else:
                     dir_name = self._path_filename.parent
-                    save_png_path = dir_name.joinpath(f'test2{datetime.now().strftime("%Y%m%d_%X")}.png')
+                    save_png_path = dir_name.joinpath(f'test2{datetime.now().strftime("%Y_%m_%d_%H_%M_%S")}.png')
                     g = sns.jointplot(x=x_label, y=y_label, data=data, kind="reg", truncate=False)
                     g.savefig(save_png_path)
                     QMessageBox.information(self, "通知", "文件已经生成 保存到文件夹中(数据所在的文件夹下)",
