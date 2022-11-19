@@ -92,8 +92,8 @@ with col1:
     with st.expander(label="⚙️Op", expanded=True):
         select_image_value = st.file_uploader(
             label="select an image",
-            type=['png', 'jpg'])
-        select_num_cluster = st.slider(label='the number of color_palette', min_value=3, max_value=20)
+            type=['png', 'jpg','jpeg'])
+        select_num_cluster = st.slider(label='the number of color_palette', min_value=2, max_value=20)
         form = st.form("template_form")
 
         submit = form.form_submit_button("Generate Color Palette")
@@ -102,7 +102,9 @@ with col2:
     with st.expander(label="🏞️show Image", expanded=True):
 
         if select_image_value is not None:
-            st.image(select_image_value.getvalue(), width=600, caption="show image")
+            st.image(select_image_value.getvalue(),
+                     # width=600,
+                     caption="show image")
         else:
             st.markdown("⬅️⬅️⬅️⬅️⬅️")
 
@@ -111,7 +113,9 @@ with col2:
             image_data_ = Image.open(BytesIO(select_image_value.getvalue())).convert('RGB')
             image_data_ = np.array(image_data_)
             # get color list
-            random_color = image2color_list(imagedata=image_data_, n_clutser=select_num_cluster)
+
+            with st.spinner('Processing...'):
+                random_color = image2color_list(imagedata=image_data_, n_clutser=select_num_cluster)
 
             # with st.expander(label="3. show color palette", expanded=True):
             # st.markdown("## 🎨show color palette")
