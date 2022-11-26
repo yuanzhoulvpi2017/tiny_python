@@ -6,7 +6,7 @@ python 数据科学应用
 
 ## 说明
 关联的公众号为：
-<img height="400" src="/Imagesgzh.jpg" width="400"/>
+<img height="400" src="https://github.com/yuanzhoulvpi2017/tiny_python/blob/main/Images/gzh.jpg?raw=true" width="400"/>
 
 ## 主要涉及包
 1. 基础数据： numpy、pandas、
