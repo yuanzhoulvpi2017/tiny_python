@@ -92,7 +92,7 @@ with col1:
     with st.expander(label="⚙️Op", expanded=True):
         select_image_value = st.file_uploader(
             label="select an image",
-            type=['png', 'jpg','jpeg'])
+            type=['png', 'jpg', 'jpeg'])
         select_num_cluster = st.slider(label='the number of color_palette', min_value=2, max_value=20)
         form = st.form("template_form")
 

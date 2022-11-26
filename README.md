@@ -4,6 +4,10 @@ python 数据科学应用
 2. 在python非常强的工程基础上，把R语言若干优秀的功能加入到python上.
 3. 致力于用最简单，最通用的包，解决复杂问题.
 
+## 说明
+关联的公众号为：
+<img height="400" src="/Imagesgzh.jpg" width="400"/>
+
 ## 主要涉及包
 1. 基础数据： numpy、pandas、
 2. 基础的可视化：matplotlib、plotly
